@@ -1,5 +1,4 @@
 const { Client, GatewayIntentBits } = require('discord.js');
-//const { token } = require('./config.json');
 require('dotenv').config();
 const { request } = require('undici');
 
