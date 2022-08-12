@@ -1,5 +1,6 @@
 const { Client, GatewayIntentBits } = require('discord.js');
-const { token } = require('./config.json');
+//const { token } = require('./config.json');
+require('dotenv').config();
 const { request } = require('undici');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -36,5 +37,5 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
-client.login(token);
+client.login(process.env.TOKEN);
 
