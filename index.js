@@ -48,6 +48,12 @@ client.on('interactionCreate', async interaction => {
             message += '\n Did NOT take into account these lands: ' + res.removedLands;
         }
 
+        for(var i = 0; i < res.colorRequirements.length; i++) {
+            var r = res.colorRequirements[i];
+            if(r.amount != 0) continue;
+            message += '\n Need' + r.amount + 'sources of {' + r.color + '}';
+        }
+
         message += '\n Color requirements: ' + res.colorRequirements;
         
         var sources = res.manarockRatio.manaRocks + res.manarockRatio.lands;
