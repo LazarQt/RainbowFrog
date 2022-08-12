@@ -34,7 +34,7 @@ client.on('interactionCreate', async interaction => {
         interaction.editReply('sending request to ' + remoteUrl);
         const res = await getJSONResponse(manabaseRequest.body);     
         
-        var message;
+        var message = "";
 
         if(res.cardsNotFound.length > 0) {
             message += '\n I couldn\'t find these cards: ' + res.cardsNotFound;
@@ -51,8 +51,10 @@ client.on('interactionCreate', async interaction => {
         message += '\n Color requirements: ' + res.colorRequirements;
         
         var sources = res.manarockRatio.manaRocks + res.manarockRatio.lands;
-        if(sources > decklist.length) message += '\n By the way, your deck could use some more cards or a higher curve!';
-        if(sources < decklist.length) message += '\n By the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
+        if(sources > res.lands.length) message += '\n By the way, your deck could use some more cards or a higher curve!';
+        if(sources < res.lands.length) message += '\n By the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
+
+        message += '\nTotal card count: ' + sources + res.lands.length;
 
         message += '\n Lands: \n' + res.lands;
 
