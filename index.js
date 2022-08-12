@@ -32,7 +32,28 @@ client.on('interactionCreate', async interaction => {
         const remoteUrl = 'https://rainbowcalculator.herokuapp.com/api/manabase/' + decklist.join('|') + '/' + ignorelands;
         const manabaseRequest = await request(remoteUrl);
         interaction.editReply('sending request to ' + remoteUrl);
-        const res = await getJSONResponse(manabaseRequest.body);      
+        const res = await getJSONResponse(manabaseRequest.body);     
+        
+        var message;
+
+        if(res.cardsNotFound.length > 0) {
+            message += '\n I couldn\'t find these cards: ' + res.cardsNotFound;
+        }
+
+        if(res.excludedCards.length > 0) {
+            message += '\n Ignored the following cards due to difficult calculation: ' + res.excludedCards;
+        }
+
+        if(res.removedLands.length > 0) {
+            message += '\n Did NOT take into account these lands: ' + res.removedLands;
+        }
+
+        message += '\n Colore requirements: ' + res.colorRequirements;
+        
+        var sources = res.manarockRatio.manaRocks + res.manarockRatio.lands;
+        if(sources > decklist.length) message += '\n By the way, your deck could use some more cards or a higher curve!';
+        if(sources < decklist.length) message += '\n By the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
+
         interaction.editReply('Lands: ' + '\n' + res.lands);
     }
 });
