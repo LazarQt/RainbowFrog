@@ -64,7 +64,11 @@ client.on('interactionCreate', async interaction => {
 
         message += '\nTotal card count: ' + total;
 
-        message += '\n Lands: \n' + res.lands;
+        message += '\n Lands: \n';
+
+        res.lands.forEach(element => {
+            message += '\n' + element;
+        });
 
         interaction.editReply(message);
     }
