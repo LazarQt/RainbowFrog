@@ -48,13 +48,15 @@ client.on('interactionCreate', async interaction => {
             message += '\n Did NOT take into account these lands: ' + res.removedLands;
         }
 
-        message += '\n Colore requirements: ' + res.colorRequirements;
+        message += '\n Color requirements: ' + res.colorRequirements;
         
         var sources = res.manarockRatio.manaRocks + res.manarockRatio.lands;
         if(sources > decklist.length) message += '\n By the way, your deck could use some more cards or a higher curve!';
         if(sources < decklist.length) message += '\n By the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
 
-        interaction.editReply('Lands: ' + '\n' + res.lands);
+        message += '\n Lands: \n' + res.lands;
+
+        interaction.editReply(message);
     }
 });
 
