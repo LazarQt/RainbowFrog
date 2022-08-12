@@ -44,8 +44,10 @@ client.on('interactionCreate', async interaction => {
             message += '\n Ignored the following cards due to difficult calculation: ' + res.excludedCards;
         }
 
+        var subtract = 0;
         if(res.removedLands.length > 0) {
             message += '\n Did NOT take into account these lands: ' + res.removedLands;
+            subtract = res.removedLands;
         }
 
         for(var i = 0; i < res.colorRequirements.length; i++) {
@@ -54,11 +56,13 @@ client.on('interactionCreate', async interaction => {
             message += '\n Need ' + r.amount + ' sources of {' + r.color + '}';
         }
         
-        //var sources = res.manarockRatio.manaRocks + res.manarockRatio.lands;
-        //if(sources > res.lands.length) message += '\n By the way, your deck could use some more cards or a higher curve!';
-        //if(sources < res.lands.length) message += '\n By the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
+        var cardcount = decklist.length - subtract;
+        var sources = res.lands.length;
+        var total = cardcount + sources;
+        if(total < 100) message += '\n By the way, your deck could use some more cards or a higher curve!';
+        if(sources > total) message += '\n By the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
 
-        //message += '\nTotal card count: ' + sources + res.lands.length;
+        message += '\nTotal card count: ' + total;
 
         message += '\n Lands: \n' + res.lands;
 
