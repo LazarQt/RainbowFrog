@@ -11,6 +11,10 @@ const commands = [
             option.setName('decklist')
                 .setDescription('Your whole deck with cards separated by 1s!')
                 .setRequired(true)
+        ).addStringOption(option =>
+            option.setName('ignorelands')
+                .setDescription('Lands you DON\'t want in your deck, separated by |s!')
+                .setRequired(false)
         ),
 ]
     .map(command => command.toJSON());

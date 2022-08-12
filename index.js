@@ -26,9 +26,10 @@ client.on('interactionCreate', async interaction => {
     await interaction.deferReply();
 
     const decklist = interaction.options.getString('decklist').split('1');
+    const ignorelands = interaction.options.getString('ignorelands');
 
     if (commandName === 'mana') {
-        const remoteUrl = 'https://rainbowcalculator.herokuapp.com/api/manabase/' + decklist.join('|');
+        const remoteUrl = 'https://rainbowcalculator.herokuapp.com/api/manabase/' + decklist.join('|') + '/' + ignorelands;
         const manabaseRequest = await request(remoteUrl);
         interaction.editReply('sending request to ' + remoteUrl);
         const res = await getJSONResponse(manabaseRequest.body);      
