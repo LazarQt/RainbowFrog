@@ -47,7 +47,7 @@ client.on('interactionCreate', async interaction => {
         var subtract = 0;
         if(res.removedLands.length > 0) {
             message += '\n Did NOT take into account these lands: ' + res.removedLands;
-            subtract = res.removedLands;
+            subtract = res.removedLands.length;
         }
 
         for(var i = 0; i < res.colorRequirements.length; i++) {
