@@ -33,7 +33,7 @@ client.on('interactionCreate', async interaction => {
         const manabaseRequest = await request(remoteUrl);
         interaction.editReply('sending request to ' + remoteUrl);
         const res = await getJSONResponse(manabaseRequest.body);      
-        interaction.editReply('Lands: ' + res.lands);
+        interaction.editReply('Lands: ' + '\n' + res.lands);
     }
 });
 
