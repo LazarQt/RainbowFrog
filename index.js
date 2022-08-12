@@ -50,17 +50,15 @@ client.on('interactionCreate', async interaction => {
 
         for(var i = 0; i < res.colorRequirements.length; i++) {
             var r = res.colorRequirements[i];
-            if(r.amount != 0) continue;
-            message += '\n Need' + r.amount + 'sources of {' + r.color + '}';
+            if(r.amount == 0) continue;
+            message += '\n Need ' + r.amount + ' sources of {' + r.color + '}';
         }
-
-        message += '\n Color requirements: ' + res.colorRequirements;
         
-        var sources = res.manarockRatio.manaRocks + res.manarockRatio.lands;
-        if(sources > res.lands.length) message += '\n By the way, your deck could use some more cards or a higher curve!';
-        if(sources < res.lands.length) message += '\n By the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
+        //var sources = res.manarockRatio.manaRocks + res.manarockRatio.lands;
+        //if(sources > res.lands.length) message += '\n By the way, your deck could use some more cards or a higher curve!';
+        //if(sources < res.lands.length) message += '\n By the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
 
-        message += '\nTotal card count: ' + sources + res.lands.length;
+        //message += '\nTotal card count: ' + sources + res.lands.length;
 
         message += '\n Lands: \n' + res.lands;
 
