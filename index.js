@@ -35,7 +35,7 @@ client.on('interactionCreate', async interaction => {
 
         const remoteUrl = 'https://rainbowcalculator.herokuapp.com/api/manabase/' + decklist.join('|') + '/' + ignorelands;
         const manabaseRequest = await request(remoteUrl);
-        interaction.editReply('sending request to ' + remoteUrl);
+        interaction.editReply('creating manabase...');
         const res = await getJSONResponse(manabaseRequest.body);
 
         var message = "";
