@@ -61,13 +61,13 @@ client.on('interactionCreate', async interaction => {
                     message += '\nNeed ' + r.amount + ' sources of {' + r.color + '}';
                 }
 
-                var cardcount = decklist.length - subtract;
+                var cardcount = res.totalRelevantCards;
                 var sources = res.lands.length;
                 var total = cardcount + sources;
                 if (total < 100) message += '\nBy the way, your deck could use some more cards or a higher curve!';
                 if (sources > total) message += '\nBy the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
 
-                message += '\nTotal card count: ' + total;
+                message += '\nTotal card count: ' + cardcount;
 
                 message += '\nLands: \n';
 
