@@ -72,6 +72,8 @@ client.on('interactionCreate', async interaction => {
                 if (total < 100) message += '\nBy the way, your deck could use some more cards or a higher curve!';
                 if (sources > total) message += '\nBy the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
 
+                message += '\nAverage mana value: ' + res.averageManaValue;
+
                 message += '\nTotal card count: ' + cardcount;
 
                 message += '\nLands: \n';
