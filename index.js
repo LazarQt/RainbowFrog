@@ -41,6 +41,11 @@ client.on('interactionCreate', async interaction => {
                 var res = response.data.data;
                 var message = "";
 
+                if(res.error != null && res.error.length > 0) {
+                    interaction.editReply(res.error);
+                    return;
+                }
+
                 if (res.cardsNotFound.length > 0) {
                     message += '\nI couldn\'t find these cards: ' + res.cardsNotFound;
                 }
