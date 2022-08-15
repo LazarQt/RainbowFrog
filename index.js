@@ -74,9 +74,13 @@ client.on('interactionCreate', async interaction => {
 
                 message += '\nAverage mana value: ' + res.averageManaValue;
 
+                if(res.lands.length > res.manarockRatio.lands) {
+                    message += '\nToo many lands are required to meet requirements. Please report to developer, guess there needs to be a land priority for extreme cases like this';
+                }
+
                 message += '\nTotal card count: ' + cardcount;
 
-                message += '\nLands: \n';
+                message += '\nLands('+res.lands.length+'): \n';
 
                 res.lands.forEach(element => {
                     message += '\n' + element;
