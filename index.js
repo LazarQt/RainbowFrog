@@ -58,7 +58,7 @@ client.on('interactionCreate', async interaction => {
 
                 if(res.colorRequirementsErrors.length > 0) {
                     res.colorRequirementsErrors.forEach(element => {
-                        message += '\n\n' + element;
+                        message += '\n' + element;
                     });
                 }
 
@@ -73,30 +73,36 @@ client.on('interactionCreate', async interaction => {
                     var x = r.amount - r.amountFulfilled;
                     if (x == 0) continue;
                     if(x > 0) {
-                        message += '\n\nStill need ' + x + ' sources of {' + r.color + '}';
+                        message += '\nStill need ' + x + ' sources of {' + r.color + '}';
                     }
                     if(x < 0) {
-                        message += '\n\nToo many (' + Math.abs(x) + ') sources of {' + r.color + '}';
+                        message += '\nToo many (' + Math.abs(x) + ') sources of {' + r.color + '}';
                     }
                     
                 }
 
-                var total = res.totalRelevantCards + res.sourcesCount;
-                message += '\n\nTotal deck size: ' + total;;
+                var total = res.relevantCardList.length + res.sourcesCount;
+                
                 if (total < 100) message += '\nBy the way, your deck could use some more cards or a higher curve!';
                 if (total > 100) message += '\nBy the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
 
                 message += '\n\nAverage mana value: ' + res.averageManaValue;
 
-                if(res.lands.length > res.manarockRatio.lands) {
-                    message += '\n\nToo many lands are required to meet requirements. Please report to developer, guess there needs to be a land priority for extreme cases like this';
+                if(res.sourcesCount.length > res.manarockRatio.landsWithoutRocks + res.manarockRatio.manaRocks) {
+                    message += '\nToo many lands are required to meet requirements. Please report to developer, guess there needs to be a land priority for extreme cases like this';
                 }
 
-                message += '\n\nTotal card count: ' + cardcount;
+                message += '\n\nTotal deck size: ' + total;
 
-                message += '\n\nLands('+res.lands.length+'): \n';
+                message += '\n\nDeck('+res.relevantCardList.length+'):';
 
-                res.lands.forEach(element => {
+                res.relevantCardList.forEach(element => {
+                    message += '\n' + element;
+                });
+
+                message += '\n\nMana sources('+res.sourcesCount+'):';
+
+                res.sources.forEach(element => {
                     message += '\n' + element;
                 });
 
