@@ -71,6 +71,9 @@ client.on('interactionCreate', async interaction => {
                 for (var i = 0; i < res.colorRequirements.length; i++) {
                     var r = res.colorRequirements[i];
                     var x = r.amount - r.amountFulfilled;
+
+                    message += '\nCard responsible for {' + r.color + '}: ' + r.cardResponsible;
+
                     if (x == 0) continue;
                     if(x > 0) {
                         message += '\nStill need ' + x + ' sources of {' + r.color + '}';
