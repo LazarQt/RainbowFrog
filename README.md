@@ -18,3 +18,5 @@ Example:
 `/mana [1 Adeliz, the Cinder Wind 1 Brainstorm 1 Lightning Bolt] [Volcanic Island | Mana Confluence]`
 
 ![Untitled Diagram drawio](https://user-images.githubusercontent.com/5879928/185720343-bfed4539-cc1d-4357-9ce5-9c101a79d5ad.svg)
+
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/5879928/185720363-8ff293c6-6026-4f75-a3c7-dd04c739441e.png)
