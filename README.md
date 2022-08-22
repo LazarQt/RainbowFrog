@@ -29,7 +29,7 @@ There is an option to ignore lands, in case someone doesn't want to play EDH wit
 
 # Technical Overview
 
-![Untitled Diagram drawio(2)](https://user-images.githubusercontent.com/5879928/185720951-d76c3490-7405-4358-b9ee-20694a09960c.png)
+![Diagram API](https://user-images.githubusercontent.com/5879928/185720951-d76c3490-7405-4358-b9ee-20694a09960c.png)
 
 The development setup uses the power of automatic deployments to automatize the entire process apart from checking in the code to GitHub repository.
 
