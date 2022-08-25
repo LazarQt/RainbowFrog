@@ -97,15 +97,11 @@ client.on('interactionCreate', async interaction => {
 
                 message += '\n\nTotal deck size: ' + total;
 
-                message += '\n\nDeck('+res.relevantCardList.length+'):';
+                //message += '\n\nDeck('+res.relevantCardList.length+'):';
 
-                res.relevantCardList.forEach(element => {
-                    message += '\n' + element;
-                });
-
-                interaction.editReply(message);
-                await interaction.deferReply();
-                message = "";
+                //res.relevantCardList.forEach(element => {
+                //    message += '\n' + element;
+                //});
 
                 message += '\n\nMana sources('+res.sourcesCount+'):';
 
