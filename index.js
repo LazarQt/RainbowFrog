@@ -109,6 +109,8 @@ client.on('interactionCreate', async interaction => {
                     message += '\n' + element;
                 });
 
+                console.log("message length: " + message.length);
+
                 interaction.editReply(message);
             })
             .catch(function (error) {
