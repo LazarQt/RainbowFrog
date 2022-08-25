@@ -15,12 +15,20 @@ client.on('interactionCreate', async interaction => {
 
     const decklist = interaction.options.getString('decklist').split('1');
     var ignorelands = interaction.options.getString('ignorelands');
+    var ignoreavgmv = interaction.options.getString('ignoreavgmv');
 
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
     if (commandName === 'mana') {
+
         if (ignorelands != null) {
             ignorelands = ignorelands.split('|').map(element => {
+                return element.trim();
+            });
+        }
+
+        if (ignoreavgmv != null) {
+            ignoreavgmv = ignoreavgmv.split('|').map(element => {
                 return element.trim();
             });
         }
@@ -32,7 +40,8 @@ client.on('interactionCreate', async interaction => {
         axios
             .post('https://rainbowcalculator.herokuapp.com/api/manabase', {
                 Decklist: search,
-                Ignorelands: ignorelands
+                Ignorelands: ignorelands,
+                Ignoreaveragemv: ignoreavgmv
             }, {
                 'Content-Type': 'application/json',
             }

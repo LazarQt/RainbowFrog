@@ -15,6 +15,10 @@ const commands = [
             option.setName('ignorelands')
                 .setDescription('Lands you DON\'t want in your deck, separated by |s!')
                 .setRequired(false)
+        ).addStringOption(option =>
+            option.setName('ignoreavgmv')
+                .setDescription('Cards to be excluded from mana value calculations, separated by |s!')
+                .setRequired(false)
         ),
 ]
     .map(command => command.toJSON());
