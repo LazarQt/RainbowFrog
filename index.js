@@ -104,7 +104,7 @@ client.on('interactionCreate', async interaction => {
                 });
 
                 interaction.editReply(message);
-
+                await interaction.deferReply();
                 message = "";
 
                 message += '\n\nMana sources('+res.sourcesCount+'):';
@@ -113,9 +113,9 @@ client.on('interactionCreate', async interaction => {
                     message += '\n' + element;
                 });
 
-                //interaction.editReply(message);
+                interaction.editReply(message);
                 
-                interaction.deferReply(message);
+               
             })
             .catch(function (error) {
                 console.log(error.response);
