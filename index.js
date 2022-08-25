@@ -52,7 +52,7 @@ client.on('interactionCreate', async interaction => {
                 }
 
                 if (res.excludedCards.length > 0) {
-                    message += '\n\nIgnored the following cards due to difficult calculation: ' + res.excludedCards;
+                    message += '\n\nIgnored (difficult calc): ' + res.excludedCards;
                 }
 
 
@@ -86,8 +86,8 @@ client.on('interactionCreate', async interaction => {
 
                 var total = res.relevantCardList.length + res.sourcesCount;
                 
-                if (total < 100) message += '\nBy the way, your deck could use some more cards or a higher curve!';
-                if (total > 100) message += '\nBy the way, there are too many cards now for the required card count and/or mana curve, try adjusting your deck!';
+                if (total < 100) message += '\nCurve too low.';
+                if (total > 100) message += '\nCurve too high.';
 
                 message += '\n\nAverage mana value: ' + res.averageManaValue;
 
