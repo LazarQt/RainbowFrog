@@ -114,7 +114,8 @@ client.on('interactionCreate', async interaction => {
                 });
 
                 //interaction.editReply(message);
-                interaction.reply(message);
+                
+                interaction.deferReply(message);
             })
             .catch(function (error) {
                 console.log(error.response);
