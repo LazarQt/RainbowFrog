@@ -27,7 +27,7 @@ client.on('interactionCreate', async interaction => {
             });
         }
 
-        if (ignoreavgmv != null) {
+        if (ignoreavgmv != null && ignoreamv !== undefined) {
             ignoreavgmv = ignoreavgmv.split('|').map(element => {
                 return element.trim();
             });
